@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=7">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -65,7 +65,7 @@
 <a class="skip" href="#rastrillos">Saltar al contenido</a>
 
 <!-- ============ 1. AMARILLO: el nombre ============ -->
-<header class="hero field field--yellow" id="inicio">
+<header class="hero field field--photo" id="inicio">
   <nav class="bar" aria-label="Principal">
     <a class="bar__brand" href="#inicio" aria-label="Alser Anca, inicio">
       <svg class="mark" viewBox="0 0 240 244" aria-hidden="true"><path fill="#FCC618" d="M0 241 77 0h55L55 241z"/><path fill="#E4181E" d="M142 3l95 238h-53l-18-45H75z"/></svg>
@@ -80,21 +80,19 @@
     <a class="bar__cta" href="https://wa.me/5492317464434?text=Hola%20Alser%20Anca%2C%20quer%C3%ADa%20hacer%20una%20consulta." target="_blank" rel="noopener">WhatsApp</a>
   </nav>
 
-  <div class="hero__main">
-    <h1 class="hero__name" aria-label="Alser Anca">
-      <span class="line"><span class="line__in">Alser</span></span>
-      <span class="line line--red"><span class="line__in">Anca</span></span>
-    </h1>
-    <figure class="hero__pic">
-      <img src="assets/img/rastrillo-v-12-estrellas-pastura.jpg" alt="Rastrillo en V de 12 estrellas Alser Anca, naranja, abierto sobre una pastura recién cortada" width="720" height="900" fetchpriority="high">
-    </figure>
-  </div>
-
+  <picture class="hero__bg">
+    <source media="(max-width: 760px)" srcset="assets/img/hero-rastrillo-v-pastura-celular.jpg" width="558" height="900">
+    <img src="assets/img/hero-rastrillo-v-pastura.jpg" alt="Rastrillo en V de 12 estrellas Alser Anca, naranja, abierto sobre una pastura recién cortada" width="1200" height="675" fetchpriority="high">
+  </picture>
+  <h1 class="hero__name" aria-label="Alser Anca">
+    <span class="line"><span class="line__in">Alser</span></span>
+    <span class="line line--red"><span class="line__in">Anca</span></span>
+  </h1>
   <div class="hero__foot">
     <p class="hero__lead">Fabricamos rastrillos en V, segadoras de discos y cortadoras de césped en 9&nbsp;de&nbsp;Julio. Hace más de 40 años.</p>
     <div class="hero__actions">
-      <a class="btn btn--ink" href="https://wa.me/5492317464434?text=Hola%20Alser%20Anca%2C%20quer%C3%ADa%20consultar%20por%20una%20m%C3%A1quina." target="_blank" rel="noopener">Consultar por WhatsApp</a>
-      <a class="link" href="#linea">Ver la línea completa</a>
+      <a class="btn btn--yellow" href="https://wa.me/5492317464434?text=Hola%20Alser%20Anca%2C%20quer%C3%ADa%20consultar%20por%20una%20m%C3%A1quina." target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      <a class="link link--light" href="#linea">Ver la línea completa</a>
     </div>
   </div>
 </header>
