@@ -152,7 +152,7 @@
     const ph = document.getElementById('rkPhoto');
     ph.src = 'assets/img/' + d.img; ph.width = d.iw; ph.height = d.ih;
     ph.alt = d.model + ' Alser Anca, abierto sobre el pasto';
-    document.getElementById('rkWa').href = wa('Hola Alser Anca, quería consultar por el ' + d.model.toLowerCase() + ' (' + fmt(d.w) + ' m de labor). ¿Qué plazo de entrega tienen?');
+    document.getElementById('rkWa').href = wa('Hola Alser Anca, quería consultar por el ' + d.model.charAt(0).toLowerCase() + d.model.slice(1) + ' (' + fmt(d.w) + ' m de labor). ¿Qué plazo de entrega tienen?');
     const ml = document.getElementById('rkMl');
     ml.href = d.ml ? 'https://articulo.mercadolibre.com.ar/' + d.ml : 'https://www.mercadolibre.com.ar/tienda/alser-anca';
     ml.textContent = d.ml ? 'Verlo en Mercado Libre' : 'Ver la tienda en Mercado Libre';

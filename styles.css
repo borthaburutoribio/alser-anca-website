@@ -290,7 +290,7 @@ button.link { background: none; border: 0; padding: 0; cursor: pointer; }
   .row:nth-of-type(3n) .row__pic { width: 55%; }
   .poster { padding-block: 64px; }
   .poster__list a { display: block; }
-  .poster__w { display: block; font-size: 10.4vw; }
+  .poster__w { display: block; font-size: 9.6vw; }
   .poster__d { display: block; text-align: left; font-size: 15px; margin: 6px 0 20px; max-width: none; }
   .mow { display: block; padding-block: 64px; }
   .mow__text { margin-top: 48px; }
