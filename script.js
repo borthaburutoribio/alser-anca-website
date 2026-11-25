@@ -61,86 +61,7 @@
           img: 'rastrillo-v-16-estrellas.jpg', iw: 629, ih: 200, ml: 'MLA-4031851722' }
   };
   const fmt = (n) => n.toFixed(2).replace('.', ',');
-  const svg = document.getElementById('rakeSvg');
-  const NS = 'http://www.w3.org/2000/svg';
-  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); (parent || svg).appendChild(n); return n; };
-
-  const S = 600, PX = 540 / 14;   // el cuadro: 14 m de lado
-  let current = 12, shownW = RAKES[12].w;
-
-  function star(cx, cy, r, ang, g) {
-    const s = el('g', { class: 'rk-star', transform: `translate(${cx} ${cy}) rotate(${ang})` }, g);
-    el('circle', { r }, s);
-    for (let k = 0; k < 6; k++) {
-      const a = k * Math.PI / 3;
-      el('line', { x1: 0, y1: 0, x2: (Math.cos(a) * r).toFixed(1), y2: (Math.sin(a) * r).toFixed(1) }, s);
-    }
-    el('circle', { r: r * 0.28, class: 'hub' }, s);
-  }
-
-  function draw(n, w) {
-    const d = RAKES[n];
-    while (svg.childNodes.length > 1) svg.removeChild(svg.lastChild);
-    const cx = S / 2, hw = (w * PX) / 2;
-    const top = 150, bottom = 470;
-    // pasto cortado (la franja que barre)
-    el('rect', { x: cx - hw, y: top - 10, width: hw * 2, height: S - top - 60, class: 'rk-swath' });
-    for (let y = top; y < S - 76; y += 18) el('line', { x1: cx - hw + 4, y1: y, x2: cx + hw - 4, y2: y, class: 'rk-cut' });
-    // tractor
-    el('rect', { x: cx - 32, y: 14, width: 18, height: 34, class: 'rk-tire' });
-    el('rect', { x: cx + 14, y: 14, width: 18, height: 34, class: 'rk-tire' });
-    el('rect', { x: cx - 40, y: 66, width: 22, height: 44, class: 'rk-tire' });
-    el('rect', { x: cx + 18, y: 66, width: 22, height: 44, class: 'rk-tire' });
-    el('rect', { x: cx - 16, y: 8, width: 32, height: 112, rx: 6, class: 'rk-tractor' });
-
-    const g = el('g', {});
-    const r = Math.max(13, Math.min(24, (hw * 2) / (n * 0.95)));
-    if (d.three) {
-      // de tres puntos: una fila en diagonal detrás del tractor
-      const y1 = top + 10, y2 = top + 120;
-      el('line', { x1: cx, y1: 120, x2: cx, y2: y1 + 20, class: 'rk-beam' }, g);
-      el('line', { x1: cx - hw, y1: y1, x2: cx + hw, y2: y2, class: 'rk-beam' }, g);
-      for (let i = 0; i < n; i++) {
-        const t = (i + 0.5) / n;
-        star(cx - hw + t * hw * 2, y1 + t * (y2 - y1) + 22, r, 35, g);
-      }
-      el('rect', { x: cx + hw - 40, y: y2 + 36, width: 46, height: S - y2 - 110, class: 'rk-hilera' });
-    } else {
-      // en V: brazos que abren adelante y cierran atrás, una hilera al centro
-      const half = n / 2, gap = 30;
-      el('rect', { x: cx - 26, y: bottom - 10, width: 52, height: S - bottom - 66, class: 'rk-hilera' });
-      el('line', { x1: cx, y1: 120, x2: cx, y2: bottom, class: 'rk-beam' }, g);
-      [-1, 1].forEach((side) => {
-        const x1 = cx + side * (hw - r), y1 = top + 10, x2 = cx + side * gap, y2 = bottom - 6;
-        el('line', { x1: cx, y1: top + 30, x2: x1, y2: y1 + 6, class: 'rk-beam' }, g);
-        el('line', { x1, y1, x2, y2, class: 'rk-beam' }, g);
-        for (let i = 0; i < half; i++) {
-          const t = half === 1 ? 0.5 : i / (half - 1);
-          star(x1 + (x2 - x1) * t + side * r * 0.65, y1 + (y2 - y1) * t, r, side * 30, g);
-        }
-      });
-    }
-    // cota del ancho de labor
-    const yd = S - 26;
-    el('line', { x1: cx - hw, y1: yd, x2: cx + hw, y2: yd, class: 'rk-dim' });
-    el('line', { x1: cx - hw, y1: yd - 12, x2: cx - hw, y2: yd + 12, class: 'rk-dim' });
-    el('line', { x1: cx + hw, y1: yd - 12, x2: cx + hw, y2: yd + 12, class: 'rk-dim' });
-    el('rect', { x: cx - 118, y: yd - 46, width: 236, height: 36, class: 'rk-labelbg' });
-    const lbl = el('text', { x: cx, y: yd - 18, 'text-anchor': 'middle', class: 'rk-label' });
-    lbl.textContent = fmt(w) + ' m de labor';
-  }
-
-  function tween(n) {
-    const from = shownW, to = RAKES[n].w;
-    if (reduce || from === to) { shownW = to; draw(n, to); return; }
-    const t0 = performance.now(), dur = 520;
-    const step = (now) => {
-      const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-      shownW = from + (to - from) * e; draw(n, shownW);
-      if (p < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }
+  let current = 12;
 
   function select(n) {
     current = n; const d = RAKES[n];
@@ -156,10 +77,10 @@
     const ml = document.getElementById('rkMl');
     ml.href = d.ml ? 'https://articulo.mercadolibre.com.ar/' + d.ml : 'https://www.mercadolibre.com.ar/tienda/alser-anca';
     ml.textContent = d.ml ? 'Verlo en Mercado Libre' : 'Ver la tienda en Mercado Libre';
-    tween(n);
+    if (window.Rake) window.Rake.set(Object.assign({ n }, d));
   }
 
-  if (svg) {
+  if (document.getElementById('rakeCanvas')) {
     const tabs = [...document.querySelectorAll('.tabs [role=tab]')];
     tabs.forEach((b, i) => {
       b.addEventListener('click', () => select(+b.dataset.n));
@@ -169,7 +90,10 @@
         tabs[j].focus(); select(+tabs[j].dataset.n);
       });
     });
-    draw(12, RAKES[12].w);
+    document.querySelectorAll('.modes [data-fold]').forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll('.modes [data-fold]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      if (window.Rake) window.Rake.fold(b.dataset.fold === '1');
+    }));
     select(12);
   }
 

@@ -115,7 +115,13 @@ button.link { background: none; border: 0; padding: 0; cursor: pointer; }
 /* ---------- 2. rastrillos ---------- */
 .rake { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; padding-block: 80px; min-height: 88svh; }
 .rake__plate { align-self: center; }
-.rake__plate svg { width: 100%; aspect-ratio: 1; background: var(--green); }
+.rake__plate canvas { display: block; width: 100%; aspect-ratio: 1; background: var(--green); }
+.rake__under { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; margin-top: 10px; }
+.rake__under .rake__scale { margin-top: 0; }
+.modes { display: flex; gap: 6px; }
+.modes button { min-height: 44px; padding: 0 16px; border: 0; cursor: pointer; font-weight: 500; font-size: 16px; background: color-mix(in srgb, var(--ink) 12%, var(--orange)); color: var(--ink); transition: background .2s, color .2s; }
+.modes button:hover { background: color-mix(in srgb, var(--ink) 24%, var(--orange)); }
+.modes button[aria-pressed=true] { background: var(--ink); color: var(--orange); }
 .rake__scale { font-size: var(--step-small); margin-top: 10px; font-weight: 500; }
 .rake__side { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-width: 0; }
 .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
@@ -143,18 +149,6 @@ button.link { background: none; border: 0; padding: 0; cursor: pointer; }
 .rake__why p { max-width: 52ch; }
 
 /* svg del rastrillo */
-.rk-swath { fill: #2F5A2F; }
-.rk-cut { stroke: #4C7A3E; stroke-width: 2; }
-.rk-hilera { fill: #8DA65A; }
-.rk-beam { stroke: var(--orange); stroke-width: 8; stroke-linecap: square; fill: none; }
-.rk-star circle { fill: none; stroke: var(--paper); stroke-width: 3; }
-.rk-star line { stroke: var(--paper); stroke-width: 2; }
-.rk-star .hub { fill: var(--orange); stroke: none; }
-.rk-tractor { fill: var(--red); }
-.rk-tire { fill: var(--ink); }
-.rk-dim { stroke: var(--yellow); stroke-width: 3; }
-.rk-labelbg { fill: var(--green); }
-.rk-label { fill: var(--yellow); font: 900 30px "Epilogue", sans-serif; letter-spacing: -1px; }
 
 /* ---------- 3. segadoras ---------- */
 .feats { padding-block: 0 140px; }

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,10 +102,14 @@
 <!-- ============ 2. NARANJA: rastrillos (la pieza interactiva) ============ -->
 <section class="field field--orange rake" id="rastrillos" aria-labelledby="rake-title">
   <div class="rake__plate reveal">
-    <svg id="rakeSvg" viewBox="0 0 600 600" role="img" aria-labelledby="rakeSvgTitle">
-      <title id="rakeSvgTitle">Rastrillo visto desde arriba, dibujado a escala según el ancho de labor</title>
-    </svg>
-    <p class="rake__scale">Dibujo a escala: el cuadro mide 14 metros de lado.</p>
+    <canvas id="rakeCanvas" role="img" aria-label="Rastrillo visto desde arriba, dibujado a escala sobre la pastura, con el tractor, las estrellas y la hilera que deja"></canvas>
+    <div class="rake__under">
+      <div class="modes" role="group" aria-label="Posición del rastrillo">
+        <button type="button" data-fold="0" aria-pressed="true">Trabajando</button>
+        <button type="button" data-fold="1" aria-pressed="false">Plegado</button>
+      </div>
+      <p class="rake__scale">Visto desde arriba y a escala: el cuadro mide 14 metros de lado.</p>
+    </div>
   </div>
 
   <div class="rake__side">
@@ -341,6 +345,7 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="script.js?v=4" defer></script>
+<script src="rake.js?v=2" defer></script>
+<script src="script.js?v=5" defer></script>
 </body>
 </html>
