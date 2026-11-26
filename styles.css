@@ -243,6 +243,7 @@ button.link { background: none; border: 0; padding: 0; cursor: pointer; }
 .revs__list .h-sec { margin-bottom: 24px; max-width: 18ch; }
 .rev { background: var(--paper-2); padding: clamp(24px, 3vw, 44px); border-left: 8px solid var(--yellow); }
 .rev + .rev { border-left-color: var(--red); }
+.rev blockquote { margin: 0; }
 .rev blockquote p { font-size: var(--step-lead); font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; max-width: 46ch; }
 .rev blockquote p + p { margin-top: 14px; }
 .rev figcaption { margin-top: 20px; font-size: var(--step-small); }
